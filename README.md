@@ -1,2 +1,2 @@
 # python_basic
-Collection of basic python scripts
+Collection of basic python scripts and functions
