@@ -8,13 +8,13 @@ Version 1.0.0
 -------------
 First Release
 
-Use:
--input number of uncorrected p-values to correct for as <int>
--input uncorrected p-values as <float>
+Functions:
+    user input {int} number of uncorrected p-values to be entered
+    user input {float} uncorrected pvalues
 
 Output
-Table with uncorrected and corrected p-values
-FDR_out.csv
+    dataframe with uncorrected and correcte values
+    FDR_out.csv
 
 """
 # PACKAGES
@@ -51,5 +51,5 @@ newvals.tolist()      #convert array to list
 d = {'Uncorrected':list_of_p, 'FDR':newvals}
 df = pd.DataFrame(d)
 print(df)
-df.to_csv('test.csv')
+df.to_csv('FDR_out.csv')
 
