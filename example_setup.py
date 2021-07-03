@@ -1,3 +1,6 @@
+'''
+Example setup file for building python package
+'''
 from setuptools import setup, find_packages
 import sys
 
