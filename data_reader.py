@@ -20,7 +20,7 @@ def file_path():
     return(fpath)
 
 def data_reader():
-    fname = input('\nEnter B-table file name : ')
+    fname = input('\nEnter file name : ')
     fh = os.path.join(path, fname)
     return pd.read_csv(fh)
 
