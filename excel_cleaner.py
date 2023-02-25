@@ -13,6 +13,7 @@ class directories:
     base_dir = '/Users/jessedesimone/Documents/postdoc_uf/data' 
     data_dir = os.path.join(base_dir, 'ab4240_imaging/')
 
+# define infile
 infile='ab4240_rs_final_subs.csv'
 
 # read file
