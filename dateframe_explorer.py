@@ -10,11 +10,11 @@ import xlsxwriter
 # configure directories
 class directories:
     '''Should be accessible in each module'''
-    base_dir = '/Users/jessedesimone/Documents/postdoc_uf/data' 
-    data_dir = os.path.join(base_dir, 'ab4240_imaging/')
+    base_dir = '<infile>' 
+    data_dir = os.path.join(base_dir, '<additional path>/')
 
 # define infile
-infile='ab4240_rs_final_subs.csv'
+infile='<infile>'
 
 # read file
 pd.set_option('display.max_columns', None)
@@ -36,23 +36,14 @@ print(nan_count)
 #print(df.columns)
 
 # fix some column headers
-df = df.rename(columns={"box,_aliquot1": "box_aliquot1",
-                   "box,_aliquot2": "box_aliquot2",
-                   "A?42_pg_mL": "AB42_pg_mL",
-                   "A?40__pg_mL_": "AB40_pg_mL",
-                   "A?42_40": "AB42_40",
-                   "A?42_40_Status": "AB42_40_Status",
-                   "Quest_Dx__0.16_cutoff_": "Quest_Dx_16_cutoff_",
-                   "EDUC": "educ",
-                   "SEX": "sex",
-                   "Age.x": "age"})
+df = df.rename(columns={"A": "a",
+                   "B": "b"})
 
 # define covariates
-covariates_list = ['age', 'sex', 'num_of_ApoE_Alleles', 'educ']
+covariates_list = ['<cov>', '<cov>']
 
 # export covariates as csv
 df2=df[covariates_list]
-df2 = df2.rename(columns={"num_of_ApoE_Alleles": "apoe"})
 filepath=directories.data_dir + "covariates.csv"
 df2.to_csv(filepath, index=False)
 
