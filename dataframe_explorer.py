@@ -31,7 +31,6 @@ print(df.info())
 nan_count = df.isna().sum()
 print(nan_count)
 
-'''
 # get column names
 #print(df.columns)
 
@@ -55,4 +54,22 @@ df2_scaled = pd.DataFrame(ss.fit_transform(df2),columns = df2.columns)
 filepath=directories.data_dir + "covariates_ss.csv"
 df2_scaled.to_csv(filepath, index=False)
 
-'''
+# conditional dataframe filtering
+# subset columns
+cols = ['<col>', '<col>']
+df = df[cols]
+
+# subset rows with string
+# get rows with col value greater than 80    
+df[df.['<column>'].str.contains('<string>')]
+df[df.['<column>'].str.contains('<string>')]
+df = df.loc[df['<column>'] > 80]                    
+
+# multiple conditions
+# get all rows with column value matching either string
+options = ['<string1>', '<string2>']
+df = df[df['<column>'].isin(options)]          
+
+# get all rows matching multiple conditions
+options = ['<string1>', '<string2>']
+rslt_df = df[(df['<col1>'] == 21) & df['<col2>'].isin(options)]
