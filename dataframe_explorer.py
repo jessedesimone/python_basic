@@ -54,6 +54,9 @@ df2_scaled = pd.DataFrame(ss.fit_transform(df2),columns = df2.columns)
 filepath=directories.data_dir + "covariates_ss.csv"
 df2_scaled.to_csv(filepath, index=False)
 
+#drop columns
+df = df.drop(['subj', 'grp_id'], axis=1)
+
 # conditional dataframe filtering
 # subset columns
 cols = ['<col>', '<col>']
@@ -73,3 +76,16 @@ df = df[df['<column>'].isin(options)]
 # get all rows matching multiple conditions
 options = ['<string1>', '<string2>']
 rslt_df = df[(df['<col1>'] == 21) & df['<col2>'].isin(options)]
+
+#fill missing vals
+#loop option
+loop_cols = df.loc[:, df.columns!='grp']    #loop all cols except grouping variable
+col_names = [col for col in loop_cols]
+for col in col_names:
+    df[col] = df[col].fillna(df.groupby('grp')[col].transform('median'))      #transform according to group median
+
+# get group means and sem
+'''aggregate mean and sem into single dataframe'''
+df_agg = pd.DataFrame(df.groupby('grp').agg(['mean','sem']))
+df_agg=df_agg.reset_index()
+df_agg.to_csv('means_sem.csv', index=False)
