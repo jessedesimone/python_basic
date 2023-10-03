@@ -3,6 +3,7 @@
 '''
 module to merge xlsx sheets using pandas
 out new dataframe as xlsx
+before merging, good idea to make sure that Dtypes match for left_on and right_on column names
 
 "how" options:
 inner	selects records that have matching values in both dataframes.
@@ -25,9 +26,6 @@ file1, file2 = None, None
 with pd.ExcelFile('<file>.xlsx') as reader:
     file1 = pd.read_excel(reader, sheet_name='<sheet name>')
     file2 = pd.read_excel(reader, sheet_name='<sheet name>')
-
-#make columns to match same Dtype
-file2.PTID.astype('int64')
 
 df_merge = pd.merge(
     left=file1,
