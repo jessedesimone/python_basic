@@ -27,6 +27,12 @@ with pd.ExcelFile('<file>.xlsx') as reader:
     file1 = pd.read_excel(reader, sheet_name='<sheet name>')
     file2 = pd.read_excel(reader, sheet_name='<sheet name>')
 
+#fix dtypes
+# DF=[file1, file2]
+# for df in DF:
+#     cols = df.columns[df.columns.str.contains('<string>')]  #find all columns containing specific string
+#     df[cols] = df[cols].astype('<dtype>')        #change dtype for all cols
+
 df_merge = pd.merge(
     left=file1,
     right=file2,
