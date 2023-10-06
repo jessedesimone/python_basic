@@ -2,11 +2,6 @@
 '''
 Module for reading csv data file and converting to dataframe
 
-Change Log
-=========
-0.0.1 (2021-03-04)
---------
-Initial commit
 '''
 import os
 import pandas as pd
