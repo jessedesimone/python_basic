@@ -33,13 +33,21 @@ with pd.ExcelFile('<file>.xlsx') as reader:
 #     cols = df.columns[df.columns.str.contains('<string>')]  #find all columns containing specific string
 #     df[cols] = df[cols].astype('<dtype>')        #change dtype for all cols
 
+#set merge paramaters
+left_file=file1
+right_file=file2
+left_header='<column header>'
+right_header='<column header>'
+how_type='<join type>'
+
+#merge dataframes
 df_merge = pd.merge(
-    left=file1,
-    right=file2,
-    left_on="<column name>",
-    right_on="<column name>",
-    how="inner"
+    left=left_file,
+    right=right_file,
+    left_on=left_header,
+    right_on=right_header,
+    how=how_type
 )
 
 #output to excel sheet
-df_merge.to_excel('<output name>.xlsx')
+df_merge.to_excel('df_merged_{}.xlsx'.format(how_type))
