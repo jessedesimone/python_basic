@@ -50,4 +50,4 @@ df_merge = pd.merge(
 )
 
 #output to excel sheet
-df_merge.to_excel('df_merged_{}.xlsx'.format(how_type))
+df_merge.to_excel('df_merged_{}.xlsx'.format(how_type), index=False)
