@@ -14,8 +14,7 @@ def file_path():
     print(os.listdir(fpath))
     return(fpath)
 
-def data_reader():
-    fname = input('\nEnter file name : ')
+def data_reader(fname):
     fh = os.path.join(path, fname)
     return pd.read_csv(fh)
 
