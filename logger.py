@@ -16,6 +16,7 @@ def configure_logger():
 
 #configure_logger
 configure_logger()
-logger = logging.getLogger(__name__)
-logger.info("Starting code")
-logger.info("Ending code")
+
+#logger = logging.getLogger(__name__)
+#logger.info("Starting code")
+#logger.info("Ending code")
