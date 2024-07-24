@@ -51,3 +51,26 @@ df_merge = pd.merge(
 
 #output to excel sheet
 df_merge.to_excel('df_merged_{}.xlsx'.format(how_type), index=False)
+
+
+# Merging based on multiple columns
+'''
+# Read the Excel file
+file_path = 'your_file.xlsx'  # Replace with your actual file path
+sheet1_name = 'Sheet1'  # Replace with the actual sheet name
+sheet2_name = 'Sheet2'  # Replace with the actual sheet name
+
+# Read the two sheets into DataFrames
+df1 = pd.read_excel(file_path, sheet_name=sheet1_name)
+df2 = pd.read_excel(file_path, sheet_name=sheet2_name)
+
+# Merge the DataFrames on SUBJ_ID and STUDY_DATE
+merged_df = pd.merge(df1, df2, on=['COLUMN ID A', 'COLUMN ID B'], how='inner')
+
+# Display the merged DataFrame
+print(merged_df)
+
+# Optionally, save the merged DataFrame to a new Excel file
+output_file_path = 'merged_data.xlsx'  # Replace with your desired output file path
+merged_df.to_excel(output_file_path, index=False)
+'''
