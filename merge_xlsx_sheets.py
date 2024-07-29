@@ -74,3 +74,24 @@ print(merged_df)
 output_file_path = 'merged_data.xlsx'  # Replace with your desired output file path
 merged_df.to_excel(output_file_path, index=False)
 '''
+
+# Merging based on multiple columns then filtering
+# Here we want to merge based on PTID and then the dates within 1 year of eachother
+'''
+# Read the sheets
+sheet1 = pd.read_excel(excel_file, sheet_name='Sheet1')
+sheet2 = pd.read_excel(excel_file, sheet_name='Sheet2')
+
+# Merge the sheets on 'SUBJ_ID'
+merged_data = pd.merge(sheet1, sheet2, on='PTID', suffixes=('_clinical', '_imaging'))
+
+# Filter the merged DataFrame based on the date difference condition
+filtered_data = merged_data[
+    (merged_data['IMAGING_DATE_clinical'] - merged_data['IMAGING_DATE_imaging']).abs() <= pd.Timedelta(days=365)
+]
+
+# Save the filtered data to a new Excel file
+filtered_data.to_excel('filtered_merged_file.xlsx', index=False)
+
+print("Data merged successfully and saved to 'filtered_merged_file.xlsx'.")
+'''
